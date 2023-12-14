@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show .eml File Content</title>
+    <!-- Add Bootstrap CSS link -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      #file-input {
+        margin-bottom: 20px;
+      }
+
+      #status {
+        margin-bottom: 10px;
+      }
+
+      #file-content {
+        white-space: pre-line;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+    </style>
+  </head>
+  <input
+    type="file"
+    id="file-input"
+    accept=".eml"
+    class="form-control-file"
+    onchange="handleFileSelect()"
+  />
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+    <div class="container">
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button
+                class="btn btn-link"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Show .eml File Content
+              </button>
+              <button
+                class="btn btn-link float-right"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+                onclick="toggleContent()"
+              >
+                Toggle Content
+              </button>
+            </h2>
+          </div>
+
+          <div
+            id="collapseOne"
+            class="collapse show"
+            aria-labelledby="headingOne"
+            data-parent="#accordionExample"
+          >
+            <div class="card-body">
+              <pre id="file-content"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleFileSelect() {
+        var fileInput = document.getElementById("file-input");
+        var statusElement = document.getElementById("status");
+        var fileContentElement = document.getElementById("file-content");
+
+        if (fileInput.files.length > 0) {
+          var file = fileInput.files[0];
+
+          if (file.name.endsWith(".eml")) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              // Display the content of the .eml file
+              fileContentElement.textContent = e.target.result;
+            };
+
+            reader.readAsText(file);
+            statusElement.textContent = "Selected file: " + file.name;
+          } else {
+            statusElement.textContent = "Please select a valid .eml file.";
+            // Clear the file input
+            fileInput.value = "";
+          }
+        } else {
+          statusElement.textContent = "Please select a file.";
+        }
+      }
+
+      function toggleContent() {
+        var content = document.getElementById("collapseOne");
+        $(content).collapse("toggle");
+      }
+    </script>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
