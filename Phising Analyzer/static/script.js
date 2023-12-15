@@ -2,9 +2,9 @@ function handleFileSelect() {
     var fileInput = document.getElementById("file-input");
     var statusElement = document.getElementById("status");
     var headerElement = document.getElementById("email-header");
-    var bodyElement = document.getElementById("email-body");
     var senderIpElement = document.getElementById("sender-ip");
     var abuseInfoElement = document.getElementById("abuse-info");
+    var emailContentElement = document.getElementById("email-content"); // Added line
 
     if (fileInput.files.length > 0) {
         var file = fileInput.files[0];
@@ -27,8 +27,8 @@ function handleFileSelect() {
 
                     // Display the content of the .eml file
                     headerElement.textContent = `Email Headers:\n${headers}`;
-                    bodyElement.textContent = `Email Body:\n${body}`;
                     senderIpElement.innerHTML = `Sender's IP: ${senderIp}`;
+                    emailContentElement.textContent = `Email Content:\n${body}`; // Added line
 
                     // Check if the IP is malicious using the VirusTotal API
                     console.log("Checking IP for abuse:", senderIp);
@@ -37,9 +37,9 @@ function handleFileSelect() {
                 } else {
                     // Handle case where headers are not found
                     headerElement.textContent = "Invalid .eml file. Headers not found.";
-                    bodyElement.textContent = "";
                     senderIpElement.textContent = "";
                     abuseInfoElement.textContent = ""; // Clear abuse info
+                    emailContentElement.textContent = ""; // Added line
                     statusElement.textContent = "";
                 }
             };
@@ -51,14 +51,15 @@ function handleFileSelect() {
             // Clear the file input
             fileInput.value = "";
             headerElement.textContent = "";
-            bodyElement.textContent = "";
             senderIpElement.textContent = "";
             abuseInfoElement.textContent = ""; // Clear abuse info
+            emailContentElement.textContent = ""; // Added line
         }
     } else {
         statusElement.textContent = "Please select a file.";
     }
 }
+
 
 function checkIPForAbuse(ip) {
     console.log("Checking IP for abuse:", ip);
