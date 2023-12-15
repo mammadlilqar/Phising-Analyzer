@@ -2,7 +2,9 @@ body {
   background-color: #f8f9fa;
   color: #495057;
 }
-
+* {
+  box-sizing: border-box;
+}
 .container {
   max-width: 800px;
   margin: auto;
@@ -74,4 +76,67 @@ body {
 .btn-primary:hover {
   background-color: #0056b3;
   border-color: #0056b3;
+}
+.select_button{
+  display: flex;
+  height: 6vh;
+ 
+  justify-content: center;
+  margin: 0;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+
+.form-control-file{
+  background-color: transparent; /* Make the background of the select transparent */
+
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Prevents scrollbars caused by margin and padding */
+}
+
+body {
+  background-image: url("https://img.freepik.com/free-vector/immune-system-medical-shield-protection-stopping-corona-virus_1017-24486.jpg?w=1800&t=st=1702638251~exp=1702638851~hmac=3264b9007bc566f45fca8eb379240f22b8871480ef47407ad3757ab0b8d8f6c7");
+  background-repeat: no-repeat;
+  background-size: cover; /* Change to cover for a full-page background */
+  background-position: center center;
+  background-color: #f0f0f0;
+}
+
+.container {
+  min-height: 100%; /* Ensure the container covers the full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #0d45a5;
+}
+.myDiv{
+  display: flex;
+  height: 6vh;
+ 
+  justify-content: center;
+  margin: 0;
+}
+.tool_name{
+color: red;
+font-size: 55px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

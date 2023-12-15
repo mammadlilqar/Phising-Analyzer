@@ -55,9 +55,7 @@ function handleFileSelect() {
             abuseInfoElement.textContent = ""; // Clear abuse info
             emailContentElement.textContent = ""; // Added line
         }
-    } else {
-        statusElement.textContent = "Please select a file.";
-    }
+    } 
 }
 
 
